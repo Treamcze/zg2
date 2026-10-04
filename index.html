@@ -1205,7 +1205,67 @@
     max-height: 100%;
     object-fit: contain;
 }   
-    </style>
+
+.gallery-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 1px solid var(--glass-border);
+    background: var(--dark-3);
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Inter', sans-serif;
+}
+
+.filter-btn:hover {
+    border-color: var(--accent);
+    color: var(--text);
+    background: var(--glow-soft);
+}
+
+.filter-btn.active {
+    background: linear-gradient(135deg, var(--accent-2), var(--accent));
+    color: #fff;
+    border-color: transparent;
+    box-shadow: 0 4px 15px var(--glow);
+}
+
+.gallery-item.hidden {
+    display: none;
+}
+
+.gallery-item {
+    animation: gallery-fade-in 0.4s ease;
+}
+
+@keyframes gallery-fade-in {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}   
+   .collapse-btn {
+    margin-left: auto;
+    border-color: var(--glass-border);
+    background: transparent;
+}
+
+.collapse-btn:hover {
+    border-color: var(--accent);
+}
+
+.gallery-grid.collapsed .gallery-item {
+    display: none;
+}   
+   </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>   
 </head>
@@ -1398,56 +1458,69 @@
         </div>
     </section>
 
-    <!-- GALERIE -->
-    <section id="galerie">
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="section-label">📸 Galerie</span>
-                <h2 class="section-title">Z našich akcí</h2>
-                <p class="section-desc">Momentky z výjezdů, cvičení, soutěží a společenských akcí.</p>
-            </div>
-            <div class="gallery-grid">
-                <div class="gallery-item reveal">
-                    <img src="https://scontent-prg1-1.xx.fbcdn.net/v/t39.30808-6/817846695_10226503505413496_527919822187315934_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1536&ctp=s2048x1536&_nc_cat=100&ccb=1-7&_nc_sid=aa7b47&_nc_ohc=SNqQJM1knNIQ7kNvwEx9eAE&_nc_oc=AdqjgPAYc2jPGsVlVlI_Z61NPbFJZspxrrNjcpZL4mbCT6SpuvWjkOZmAbBCk6PHI7s&_nc_zt=23&_nc_ht=scontent-prg1-1.xx&_nc_gid=mW6RqWjQ3qUn4Qpdd1vh5w&_nc_ss=7b2a8&oh=00_AQMvDo7-mztN4t-M629b10uQa6lB5D-uHtdPWj7u7Tk5QQ&oe=6AC6CDB1" alt="Hasičské vozidlo" onerror="this.parentElement.classList.add('img-error')">
-                    <div class="fallback">🚒</div>
-                    <div class="gallery-shine"></div>
-                     <div class="gallery-caption">Záchranný vůz - akce Hasičský festival - 2026.</div>
-                </div>
-                <div class="gallery-item reveal">
-                    <img src="https://scontent-prg1-1.xx.fbcdn.net/v/t39.30808-6/686339437_829828436840169_5187198427105583403_n.jpg?stp=dst-jpg_tt6&cstp=mx1200x1600&ctp=s1200x1600&_nc_cat=106&ccb=1-7&_nc_sid=aa7b47&_nc_ohc=fOt4_X2dSmcQ7kNvwHBZStp&_nc_oc=AdpmJCOXnw6QOLjcFQByP8t387TGST2YfwcNPOEqi8vFoR9rmmFPQfKkP9hZjW3TrUY&_nc_zt=23&_nc_ht=scontent-prg1-1.xx&_nc_gid=r0oPkUXvt-bSbknHt1P4Gg&_nc_ss=7b2a8&oh=00_AQPE_ZCmQaEwmwLJ5CJ_B0m_UdrtgL_-gUfoVHa3cWvtqg&oe=6AC6C067" alt="Hasiči v akci" onerror="this.parentElement.classList.add('img-error')">
-                    <div class="fallback">👨‍🚒</div>
-                    <div class="gallery-shine"></div>
-                    <div class="gallery-caption">👨‍🚒Hasičský zásah v Českém Švýcarsku.</div>
-                </div>
-                <div class="gallery-item reveal">
-                    <img src="https://scontent-prg1-1.xx.fbcdn.net/v/t39.30808-6/679453837_823814560774890_9042873563584181823_n.jpg?stp=dst-jpg_tt6&cstp=mx1600x1204&ctp=s1600x1204&_nc_cat=108&ccb=1-7&_nc_sid=aa7b47&_nc_ohc=RddLTNLm3IMQ7kNvwHEIzPZ&_nc_oc=Ador8XJzVm3qGjlhYAO-_BHgnelHccikpaSju_v7v-giryeKk8dg87YlnFDJUCX5E6c&_nc_zt=23&_nc_ht=scontent-prg1-1.xx&_nc_gid=KhjwdzyCEMdp9eEsN28WVw&_nc_ss=7b2a8&oh=00_AQMbNs7LT5ePclbrMcgjy4ykWq4N6mhyzEYij91Yqp9ogg&oe=6AC82FBD" alt="soutěž v Chabařovicích" onerror="this.parentElement.classList.add('img-error')">
-                    <div class="fallback">🔥</div>
-                    <div class="gallery-shine"></div>
-                    <div class="gallery-caption">🏆závody v Chabařovicích 11.ročník.</div>
-                </div>
-                <div class="gallery-item reveal">
-                    <img src="https://scontent-prg1-1.xx.fbcdn.net/v/t39.30808-6/700658244_840343085788704_7181393630484533723_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1536&ctp=s2048x1536&_nc_cat=106&ccb=1-7&_nc_sid=aa7b47&_nc_ohc=R9YcwtJoQ6wQ7kNvwGkyLjy&_nc_oc=AdpPV3mYmgs6k1Wqt_nI1lCFZyJ5qYZUGXsauAnH2YRJvzIW3eaQL8dTM3J1CvHYpg0&_nc_zt=23&_nc_ht=scontent-prg1-1.xx&_nc_gid=1eKryjYR4bfBwa_i30uIMA&_nc_ss=7b2a8&oh=00_AQPyYfCkZXi3bh3DCsKYh4T76McllLaX1bbsavRM6OtV5g&oe=6AC6C79E" alt="THW" onerror="this.parentElement.classList.add('img-error')">
-                    <div class="fallback">💪</div>
-                    <div class="gallery-shine"></div>
-                    <div class="gallery-caption">🏕️Tábor s kolegy z THW - 2026.</div>
-                </div>
-                <div class="gallery-item reveal">
-                    <img src="https://scontent-prg1-1.xx.fbcdn.net/v/t39.30808-6/830598613_960310270458651_4606316314420974944_n.jpg?stp=dst-jpg_tt6&cstp=mx640x1136&ctp=s640x1136&_nc_cat=101&ccb=1-7&_nc_sid=aa7b47&_nc_ohc=Ou1GL38dNzgQ7kNvwF_QIw1&_nc_oc=AdqtzpEta7Az1L4ifhXK2i69ua4K65ihKx2lI-J410tH8j7F2-yh_BriDo-YWPZe0Sk&_nc_zt=23&_nc_ht=scontent-prg1-1.xx&_nc_gid=ff6syZJCC2nogxrZ4a_55Q&_nc_ss=7b2a8&oh=00_AQNL34P8zuDqmNPcdEydO1FVFde1tOgOL8auwfWpzF3D2g&oe=6AC82F8E" alt="Hasičská technika" onerror="this.parentElement.classList.add('img-error')">
-                    <div class="fallback">🛠️</div>
-                    <div class="gallery-shine"></div>
-                    <div class="gallery-caption">🚒14. ročník Memoriálu Pavla Doubravy</div>
-                </div>
-                <div class="gallery-item reveal">
-                    <img src="https://scontent-prg1-1.xx.fbcdn.net/v/t39.30808-6/745661647_1337970928488162_2677171680754348278_n.jpg?stp=dst-jpg_tt6&cstp=mx1500x2000&ctp=s1500x2000&_nc_cat=104&ccb=1-7&_nc_sid=833d8c&_nc_ohc=GjDzMTHZVh4Q7kNvwEAR7WE&_nc_oc=AdpdklTXOgp91sWBF9a9GtindxF-vfpJw1tb0IieC0cLfs-U9efZeB80k9yNR6cM1IE&_nc_zt=23&_nc_ht=scontent-prg1-1.xx&_nc_gid=NK5HxN0Cdz2WY__FRLEtig&_nc_ss=7b2a8&oh=00_AQPARSb74P8h9U56VX-l19pGf1z8Mmfa3xBXz3Pyu0BkaQ&oe=6AC6BB7C" alt="hasičská technika" onerror="this.parentElement.classList.add('img-error')">
-                    <div class="fallback">🌙</div>
-                    <div class="gallery-shine"></div>
-                    <div class="gallery-caption">🛠️výměna motoru hasičské Tatry - 11.červenec 2026.</div>
-                </div>
+<!-- GALERIE -->
+<section id="galerie">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-label">📸 Galerie</span>
+            <h2 class="section-title">Z našich akcí</h2>
+            <p class="section-desc">Momentky z výjezdů, cvičení, soutěží a společenských akcí.</p>
+        </div>
 
-                </div>
+        <!-- FILTER BUTTONS -->
+      <div class="gallery-filters reveal">
+    <button class="filter-btn active" data-filter="all">Vše</button>
+    <button class="filter-btn" data-filter="zasah">🚨 Zásahy</button>
+    <button class="filter-btn" data-filter="soutez">🏆 Soutěže</button>
+    <button class="filter-btn" data-filter="spolecenske">🎪 Společenské</button>
+    <button class="filter-btn" data-filter="technika">🔧 Technika</button>
+    <button class="filter-btn collapse-btn" id="collapseBtn">⬆ Sbalit vše</button>
+</div>   
+        <div class="gallery-grid">
+            <div class="gallery-item reveal" data-category="spolecenske">
+                <img src="https://scontent-prg1-1.xx.fbcdn.net/v/t39.30808-6/817846695_10226503505413496_527919822187315934_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1536&ctp=s2048x1536&_nc_cat=100&ccb=1-7&_nc_sid=aa7b47&_nc_ohc=SNqQJM1knNIQ7kNvwEx9eAE&_nc_oc=AdqjgPAYc2jPGsVlVlI_Z61NPbFJZspxrrNjcpZL4mbCT6SpuvWjkOZmAbBCk6PHI7s&_nc_zt=23&_nc_ht=scontent-prg1-1.xx&_nc_gid=mW6RqWjQ3qUn4Qpdd1vh5w&_nc_ss=7b2a8&oh=00_AQMvDo7-mztN4t-M629b10uQa6lB5D-uHtdPWj7u7Tk5QQ&oe=6AC6CDB1" alt="Hasičské vozidlo">
+                <div class="fallback">🚒</div>
+                <div class="gallery-shine"></div>
+                <div class="gallery-caption">Záchranný vůz – Hasičský festival 2026</div>
+            </div>
+
+            <div class="gallery-item reveal" data-category="zasah">
+                <img src="https://scontent-prg1-1.xx.fbcdn.net/v/t39.30808-6/686339437_829828436840169_5187198427105583403_n.jpg?stp=dst-jpg_tt6&cstp=mx1200x1600&ctp=s1200x1600&_nc_cat=106&ccb=1-7&_nc_sid=aa7b47&_nc_ohc=fOt4_X2dSmcQ7kNvwHBZStp&_nc_oc=AdpmJCOXnw6QOLjcFQByP8t387TGST2YfwcNPOEqi8vFoR9rmmFPQfKkP9hZjW3TrUY&_nc_zt=23&_nc_ht=scontent-prg1-1.xx&_nc_gid=r0oPkUXvt-bSbknHt1P4Gg&_nc_ss=7b2a8&oh=00_AQPE_ZCmQaEwmwLJ5CJ_B0m_UdrtgL_-gUfoVHa3cWvtqg&oe=6AC6C067" alt="Hasiči v akci">
+                <div class="fallback">👨‍🚒</div>
+                <div class="gallery-shine"></div>
+                <div class="gallery-caption">Hasičský zásah v Českém Švýcarsku</div>
+            </div>
+
+            <div class="gallery-item reveal" data-category="soutez">
+                <img src="https://scontent-prg1-1.xx.fbcdn.net/v/t39.30808-6/679453837_823814560774890_9042873563584181823_n.jpg?stp=dst-jpg_tt6&cstp=mx1600x1204&ctp=s1600x1204&_nc_cat=108&ccb=1-7&_nc_sid=aa7b47&_nc_ohc=RddLTNLm3IMQ7kNvwHEIzPZ&_nc_oc=Ador8XJzVm3qGjlhYAO-_BHgnelHccikpaSju_v7v-giryeKk8dg87YlnFDJUCX5E6c&_nc_zt=23&_nc_ht=scontent-prg1-1.xx&_nc_gid=KhjwdzyCEMdp9eEsN28WVw&_nc_ss=7b2a8&oh=00_AQMbNs7LT5ePclbrMcgjy4ykWq4N6mhyzEYij91Yqp9ogg&oe=6AC82FBD" alt="Soutěž v Chabařovicích">
+                <div class="fallback">🔥</div>
+                <div class="gallery-shine"></div>
+                <div class="gallery-caption">Závody v Chabařovicích – 11. ročník</div>
+            </div>
+
+            <div class="gallery-item reveal" data-category="spolecenske">
+                <img src="https://scontent-prg1-1.xx.fbcdn.net/v/t39.30808-6/700658244_840343085788704_7181393630484533723_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1536&ctp=s2048x1536&_nc_cat=106&ccb=1-7&_nc_sid=aa7b47&_nc_ohc=R9YcwtJoQ6wQ7kNvwGkyLjy&_nc_oc=AdpPV3mYmgs6k1Wqt_nI1lCFZyJ5qYZUGXsauAnH2YRJvzIW3eaQL8dTM3J1CvHYpg0&_nc_zt=23&_nc_ht=scontent-prg1-1.xx&_nc_gid=1eKryjYR4bfBwa_i30uIMA&_nc_ss=7b2a8&oh=00_AQPyYfCkZXi3bh3DCsKYh4T76McllLaX1bbsavRM6OtV5g&oe=6AC6C79E" alt="THW">
+                <div class="fallback">💪</div>
+                <div class="gallery-shine"></div>
+                <div class="gallery-caption">Tábor s kolegy z THW – 2026</div>
+            </div>
+
+            <div class="gallery-item reveal" data-category="soutez">
+                <img src="https://scontent-prg1-1.xx.fbcdn.net/v/t39.30808-6/830598613_960310270458651_4606316314420974944_n.jpg?stp=dst-jpg_tt6&cstp=mx640x1136&ctp=s640x1136&_nc_cat=101&ccb=1-7&_nc_sid=aa7b47&_nc_ohc=Ou1GL38dNzgQ7kNvwF_QIw1&_nc_oc=AdqtzpEta7Az1L4ifhXK2i69ua4K65ihKx2lI-J410tH8j7F2-yh_BriDo-YWPZe0Sk&_nc_zt=23&_nc_ht=scontent-prg1-1.xx&_nc_gid=ff6syZJCC2nogxrZ4a_55Q&_nc_ss=7b2a8&oh=00_AQNL34P8zuDqmNPcdEydO1FVFde1tOgOL8auwfWpzF3D2g&oe=6AC82F8E" alt="Memoriál">
+                <div class="fallback">🛠️</div>
+                <div class="gallery-shine"></div>
+                <div class="gallery-caption">14. ročník Memoriálu Pavla Doubravy</div>
+            </div>
+
+            <div class="gallery-item reveal" data-category="technika">
+                <img src="https://scontent-prg1-1.xx.fbcdn.net/v/t39.30808-6/745661647_1337970928488162_2677171680754348278_n.jpg?stp=dst-jpg_tt6&cstp=mx1500x2000&ctp=s1500x2000&_nc_cat=104&ccb=1-7&_nc_sid=833d8c&_nc_ohc=GjDzMTHZVh4Q7kNvwEAR7WE&_nc_oc=AdpdklTXOgp91sWBF9a9GtindxF-vfpJw1tb0IieC0cLfs-U9efZeB80k9yNR6cM1IE&_nc_zt=23&_nc_ht=scontent-prg1-1.xx&_nc_gid=NK5HxN0Cdz2WY__FRLEtig&_nc_ss=7b2a8&oh=00_AQPARSb74P8h9U56VX-l19pGf1z8Mmfa3xBXz3Pyu0BkaQ&oe=6AC6BB7C" alt="Hasičská technika">
+                <div class="fallback">🌙</div>
+                <div class="gallery-shine"></div>
+                <div class="gallery-caption">Výměna motoru hasičské Tatry – 11. 7. 2026</div>
             </div>
         </div>
-    </section>
+    </div>
+</section>   
 
     <!-- TECHNIKA -->
     <section id="technika" style="background: var(--dark-2);">
@@ -1696,6 +1769,43 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 
 //L.marker([50.6765, 13.9365]).addTo(map)
   //  .bindPopup('<strong>SDH Chabařovice</strong><br>Teplická 375, 403 17 Chabařovice');    
-    </script>
+   
+   // ===== GALLERY FILTER =====
+const filterBtns = document.querySelectorAll('.filter-btn');
+const galleryItems = document.querySelectorAll('.gallery-item');
+
+filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        // Aktivní tlačítko
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter;
+
+        galleryItems.forEach(item => {
+            if (filter === 'all' || item.dataset.category === filter) {
+                item.classList.remove('hidden');
+                item.style.animation = 'none';
+                item.offsetHeight; // reflow
+                item.style.animation = '';
+            } else {
+                item.classList.add('hidden');
+            }
+        });
+    });
+});   
+// ===== GALLERY COLLAPSE =====
+const collapseBtn = document.getElementById('collapseBtn');
+const galleryGrid = document.querySelector('.gallery-grid');
+
+collapseBtn.addEventListener('click', () => {
+    galleryGrid.classList.toggle('collapsed');
+    if (galleryGrid.classList.contains('collapsed')) {
+        collapseBtn.textContent = '⬇ Rozbalit vše';
+    } else {
+        collapseBtn.textContent = '⬆ Sbalit vše';
+    }
+});   
+   </script>
 </body>
 </html>   
