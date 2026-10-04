@@ -8,7 +8,7 @@
     <style>
         :root {
             --accent: #f97316;
-            --accent-2: #dc2626;
+            --accent-2: #ff0000;
             --accent-dark: #991b1b;
             --accent-deep: #7f1d1d;
             --accent-light: #fbbf24;
@@ -296,8 +296,8 @@
             position: absolute;
             inset: 0;
             background: url('https://www.hasicovo.cz/ver/20240416103101/variant/article/2024/04/img_8036-20240416-101941/motive-article-detail-desktop.webp') center/cover;
-            opacity: 0.12;
-            filter: saturate(0.4) brightness(0.3);
+            opacity: 0.35;
+            filter: saturate(0.7) brightness(0.6);
             transition: transform 0.1s linear;
         }
 
@@ -982,6 +982,27 @@
 
         .gallery-item:hover .gallery-shine { opacity: 1; }
 
+        .gallery-item .gallery-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 12px 16px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #fff;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.gallery-item:hover .gallery-caption {
+    opacity: 1;
+    transform: translateY(0);
+}   
+
         /* ===== CONTACT ===== */
         .contact-grid {
             display: grid;
@@ -1185,6 +1206,8 @@
     object-fit: contain;
 }   
     </style>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>   
 </head>
 <body>
 
@@ -1192,14 +1215,7 @@
     <div class="particles" id="particles"></div>
     <div class="ambient" id="ambient"></div>
 
-    <!-- SIREN INDICATOR (replaces emergency bar) -->
-    <div class="siren-indicator">
-        <div class="siren-lights">
-            <div class="siren-light red"></div>
-            <div class="siren-light blue"></div>
-        </div>
-        <span class="siren-text">Nouzová linka <a href="tel:150">150</a></span>
-    </div>
+ 
 
     <!-- NAVBAR -->
     <nav class="navbar" id="navbar">
@@ -1329,14 +1345,14 @@
                     </div>
                     <div class="card-body">
                         <span class="card-tag">Festival</span>
-                        <h3>Hasičský festival 2026</h3>
-                        <p>Byli jsme součástí <strong>Hasičského festivalu 2026</strong>, společně s dalšími sbory.</p>
+                        <h3>Hasičský festival </h3>
+                        <p>Byli jsme součástí <strong>Hasičského festivalu </strong>, společně s dalšími sbory.</p>
                         <div class="card-date">📅 2026</div>
                     </div>
                 </div>
                 <div class="card tilt-card reveal">
                     <div class="card-img-wrapper">
-                        <img class="card-img" src="https://images.unsplash.com/photo-1597055178173-2c1c57516b14?auto=format&fit=crop&w=800&q=80" alt="Lampiónový průvod" onerror="this.parentElement.classList.add('img-error')">
+                        <img class="card-img" src="https://scontent-prg1-1.xx.fbcdn.net/v/t39.30808-6/652634569_26744718008445145_926776317662519648_n.jpg?stp=cp6_dst-jpg_tt6&cstp=mx960x720&ctp=s960x720&_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=DP5nsLM4YiMQ7kNvwFlyOVn&_nc_oc=AdqOMN68k__mAeCgJ8c5H1vzz-jdmbCoioRePQFbg8MLp12f6kiB0NWVESkajzqwdyM&_nc_zt=23&_nc_ht=scontent-prg1-1.xx&_nc_gid=hDmkuHQ9lV4C8SSYAZVm7A&_nc_ss=7b2a8&oh=00_AQN_76LfuhLvqfRtQq-tD-k__bWcUNs5_T96n1c6Enm9uw&oe=6AC7F1DC" alt="Lampiónový průvod" onerror="this.parentElement.classList.add('img-error')">
                         <div class="fallback">🏮</div>
                         <div class="card-overlay"></div>
                     </div>
@@ -1344,7 +1360,7 @@
                         <span class="card-tag">Kultura</span>
                         <h3>Lampiónový průvod</h3>
                         <p>Hasiči se zúčastnili tradičního lampiónového průvodu k Den vzniku samostatného československého státu. Průvod za doprovodu dechové hudby.</p>
-                        <div class="card-date">📅 28. 10. 2022</div>
+                        <div class="card-date">📅 28. 10. 2025</div>
                     </div>
                 </div>
                 <div class="card tilt-card reveal">
@@ -1373,7 +1389,6 @@
                     <h2 class="section-title" style="margin-bottom: 28px;">Naše mise</h2>
                     <p>Jednotka sboru dobrovolných hasičů působí na území <strong>Chabařovic, Roudníků a Přestanova</strong>, při mimořádných událostech však i mimo svou působnost. Zajišťuje také požární asistenci při různých akcích města.</p>
                     <p>SDH pořádá různé akce pro děti, vede kroužky pro děti a mládež včetně přípravky od 6 let věku. Starostou SDH je p. <strong>Libor Verner</strong>, velitelem sboru je p. <strong>Rudolf Beneda</strong>.</p>
-                    <p>Naše hasičská zbrojnice je k dispozici 24 hodin denně. V případě nouze volejte <strong style="color: var(--accent); font-size: 1.2rem; transition: color var(--transition-theme);">150</strong>.</p>
                 </div>
 <div class="about-visual float-anim tilt-card reveal">
     <img src="https://i.ibb.co/B5mPTSD6/znak-SDH-Chaba-ovice-removebg-preview.png" alt="Hasiči" onerror="this.parentElement.classList.add('img-error')">
@@ -1396,31 +1411,37 @@
                     <img src="https://scontent-prg1-1.xx.fbcdn.net/v/t39.30808-6/817846695_10226503505413496_527919822187315934_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1536&ctp=s2048x1536&_nc_cat=100&ccb=1-7&_nc_sid=aa7b47&_nc_ohc=SNqQJM1knNIQ7kNvwEx9eAE&_nc_oc=AdqjgPAYc2jPGsVlVlI_Z61NPbFJZspxrrNjcpZL4mbCT6SpuvWjkOZmAbBCk6PHI7s&_nc_zt=23&_nc_ht=scontent-prg1-1.xx&_nc_gid=mW6RqWjQ3qUn4Qpdd1vh5w&_nc_ss=7b2a8&oh=00_AQMvDo7-mztN4t-M629b10uQa6lB5D-uHtdPWj7u7Tk5QQ&oe=6AC6CDB1" alt="Hasičské vozidlo" onerror="this.parentElement.classList.add('img-error')">
                     <div class="fallback">🚒</div>
                     <div class="gallery-shine"></div>
+                     <div class="gallery-caption">Záchranný vůz - akce Hasičský festival - 2026.</div>
                 </div>
                 <div class="gallery-item reveal">
                     <img src="https://scontent-prg1-1.xx.fbcdn.net/v/t39.30808-6/686339437_829828436840169_5187198427105583403_n.jpg?stp=dst-jpg_tt6&cstp=mx1200x1600&ctp=s1200x1600&_nc_cat=106&ccb=1-7&_nc_sid=aa7b47&_nc_ohc=fOt4_X2dSmcQ7kNvwHBZStp&_nc_oc=AdpmJCOXnw6QOLjcFQByP8t387TGST2YfwcNPOEqi8vFoR9rmmFPQfKkP9hZjW3TrUY&_nc_zt=23&_nc_ht=scontent-prg1-1.xx&_nc_gid=r0oPkUXvt-bSbknHt1P4Gg&_nc_ss=7b2a8&oh=00_AQPE_ZCmQaEwmwLJ5CJ_B0m_UdrtgL_-gUfoVHa3cWvtqg&oe=6AC6C067" alt="Hasiči v akci" onerror="this.parentElement.classList.add('img-error')">
                     <div class="fallback">👨‍🚒</div>
                     <div class="gallery-shine"></div>
+                    <div class="gallery-caption">👨‍🚒Hasičský zásah v Českém Švýcarsku.</div>
                 </div>
                 <div class="gallery-item reveal">
-                    <img src="https://scontent-prg1-1.xx.fbcdn.net/v/t39.30808-6/675591711_818819134607766_2553996066690175660_n.jpg?stp=dst-jpg_tt6&cstp=mx2040x1530&ctp=s2040x1530&_nc_cat=107&ccb=1-7&_nc_sid=aa7b47&_nc_ohc=sKk0Gw0B0WEQ7kNvwHU2iDo&_nc_oc=AdraLy5T7i9RvoezWY3_kOEqTN7M0nLTF0vY6Biz0m5j8fbzcn5ULZOc7EyVoU-9Gn0&_nc_zt=23&_nc_ht=scontent-prg1-1.xx&_nc_gid=bx3Poiimd-MroUgrLSuJIw&_nc_ss=7b2a8&oh=00_AQP9S1TxDn5ok88MhiJ3ASGBcQf-vXRRxIsutluln-GBYQ&oe=6AC6BCAF" alt="Plameny" onerror="this.parentElement.classList.add('img-error')">
+                    <img src="https://scontent-prg1-1.xx.fbcdn.net/v/t39.30808-6/679453837_823814560774890_9042873563584181823_n.jpg?stp=dst-jpg_tt6&cstp=mx1600x1204&ctp=s1600x1204&_nc_cat=108&ccb=1-7&_nc_sid=aa7b47&_nc_ohc=RddLTNLm3IMQ7kNvwHEIzPZ&_nc_oc=Ador8XJzVm3qGjlhYAO-_BHgnelHccikpaSju_v7v-giryeKk8dg87YlnFDJUCX5E6c&_nc_zt=23&_nc_ht=scontent-prg1-1.xx&_nc_gid=KhjwdzyCEMdp9eEsN28WVw&_nc_ss=7b2a8&oh=00_AQMbNs7LT5ePclbrMcgjy4ykWq4N6mhyzEYij91Yqp9ogg&oe=6AC82FBD" alt="soutěž v Chabařovicích" onerror="this.parentElement.classList.add('img-error')">
                     <div class="fallback">🔥</div>
                     <div class="gallery-shine"></div>
+                    <div class="gallery-caption">🏆závody v Chabařovicích 11.ročník.</div>
                 </div>
                 <div class="gallery-item reveal">
-                    <img src="https://scontent-prg1-1.xx.fbcdn.net/v/t39.30808-6/700658244_840343085788704_7181393630484533723_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1536&ctp=s2048x1536&_nc_cat=106&ccb=1-7&_nc_sid=aa7b47&_nc_ohc=R9YcwtJoQ6wQ7kNvwGkyLjy&_nc_oc=AdpPV3mYmgs6k1Wqt_nI1lCFZyJ5qYZUGXsauAnH2YRJvzIW3eaQL8dTM3J1CvHYpg0&_nc_zt=23&_nc_ht=scontent-prg1-1.xx&_nc_gid=1eKryjYR4bfBwa_i30uIMA&_nc_ss=7b2a8&oh=00_AQPyYfCkZXi3bh3DCsKYh4T76McllLaX1bbsavRM6OtV5g&oe=6AC6C79E" alt="Cvičení" onerror="this.parentElement.classList.add('img-error')">
+                    <img src="https://scontent-prg1-1.xx.fbcdn.net/v/t39.30808-6/700658244_840343085788704_7181393630484533723_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1536&ctp=s2048x1536&_nc_cat=106&ccb=1-7&_nc_sid=aa7b47&_nc_ohc=R9YcwtJoQ6wQ7kNvwGkyLjy&_nc_oc=AdpPV3mYmgs6k1Wqt_nI1lCFZyJ5qYZUGXsauAnH2YRJvzIW3eaQL8dTM3J1CvHYpg0&_nc_zt=23&_nc_ht=scontent-prg1-1.xx&_nc_gid=1eKryjYR4bfBwa_i30uIMA&_nc_ss=7b2a8&oh=00_AQPyYfCkZXi3bh3DCsKYh4T76McllLaX1bbsavRM6OtV5g&oe=6AC6C79E" alt="THW" onerror="this.parentElement.classList.add('img-error')">
                     <div class="fallback">💪</div>
                     <div class="gallery-shine"></div>
+                    <div class="gallery-caption">🏕️Tábor s kolegy z THW - 2026.</div>
                 </div>
                 <div class="gallery-item reveal">
-                    <img src="https://scontent-prg1-1.xx.fbcdn.net/v/t39.30808-6/679985212_823818217441191_2069285504135529386_n.jpg?stp=dst-jpg_tt6&cstp=mx2000x1500&ctp=s2000x1500&_nc_cat=109&ccb=1-7&_nc_sid=aa7b47&_nc_ohc=-bV-XF8UTGoQ7kNvwEChOvu&_nc_oc=Adpu7_gFXnUt_AKwhYXl12xSr7wgcaOHLpJBVFP0aaTFPowxnbRhxXOPolf2Q3pQ1Ss&_nc_zt=23&_nc_ht=scontent-prg1-1.xx&_nc_gid=-iwer6_1BKgvWTwbJ3L3ww&_nc_ss=7b2a8&oh=00_AQN3FnwJJzIKHfeDfi1JZVW8qCv7toREDN_UaShviOlqOQ&oe=6AC6E82A" alt="Hasičská technika" onerror="this.parentElement.classList.add('img-error')">
+                    <img src="https://scontent-prg1-1.xx.fbcdn.net/v/t39.30808-6/830598613_960310270458651_4606316314420974944_n.jpg?stp=dst-jpg_tt6&cstp=mx640x1136&ctp=s640x1136&_nc_cat=101&ccb=1-7&_nc_sid=aa7b47&_nc_ohc=Ou1GL38dNzgQ7kNvwF_QIw1&_nc_oc=AdqtzpEta7Az1L4ifhXK2i69ua4K65ihKx2lI-J410tH8j7F2-yh_BriDo-YWPZe0Sk&_nc_zt=23&_nc_ht=scontent-prg1-1.xx&_nc_gid=ff6syZJCC2nogxrZ4a_55Q&_nc_ss=7b2a8&oh=00_AQNL34P8zuDqmNPcdEydO1FVFde1tOgOL8auwfWpzF3D2g&oe=6AC82F8E" alt="Hasičská technika" onerror="this.parentElement.classList.add('img-error')">
                     <div class="fallback">🛠️</div>
                     <div class="gallery-shine"></div>
+                    <div class="gallery-caption">🚒14. ročník Memoriálu Pavla Doubravy</div>
                 </div>
                 <div class="gallery-item reveal">
-                    <img src="https://scontent-prg1-1.xx.fbcdn.net/v/t39.30808-6/745661647_1337970928488162_2677171680754348278_n.jpg?stp=dst-jpg_tt6&cstp=mx1500x2000&ctp=s1500x2000&_nc_cat=104&ccb=1-7&_nc_sid=833d8c&_nc_ohc=GjDzMTHZVh4Q7kNvwEAR7WE&_nc_oc=AdpdklTXOgp91sWBF9a9GtindxF-vfpJw1tb0IieC0cLfs-U9efZeB80k9yNR6cM1IE&_nc_zt=23&_nc_ht=scontent-prg1-1.xx&_nc_gid=NK5HxN0Cdz2WY__FRLEtig&_nc_ss=7b2a8&oh=00_AQPARSb74P8h9U56VX-l19pGf1z8Mmfa3xBXz3Pyu0BkaQ&oe=6AC6BB7C" alt="Noc" onerror="this.parentElement.classList.add('img-error')">
+                    <img src="https://scontent-prg1-1.xx.fbcdn.net/v/t39.30808-6/745661647_1337970928488162_2677171680754348278_n.jpg?stp=dst-jpg_tt6&cstp=mx1500x2000&ctp=s1500x2000&_nc_cat=104&ccb=1-7&_nc_sid=833d8c&_nc_ohc=GjDzMTHZVh4Q7kNvwEAR7WE&_nc_oc=AdpdklTXOgp91sWBF9a9GtindxF-vfpJw1tb0IieC0cLfs-U9efZeB80k9yNR6cM1IE&_nc_zt=23&_nc_ht=scontent-prg1-1.xx&_nc_gid=NK5HxN0Cdz2WY__FRLEtig&_nc_ss=7b2a8&oh=00_AQPARSb74P8h9U56VX-l19pGf1z8Mmfa3xBXz3Pyu0BkaQ&oe=6AC6BB7C" alt="hasičská technika" onerror="this.parentElement.classList.add('img-error')">
                     <div class="fallback">🌙</div>
                     <div class="gallery-shine"></div>
+                    <div class="gallery-caption">🛠️výměna motoru hasičské Tatry - 11.červenec 2026.</div>
                 </div>
 
                 </div>
@@ -1437,7 +1458,7 @@
                 <p class="section-desc">Klikni na vozidlo a zobraz fotku.</p>
             </div>
             <div class="tech-grid">
-                <div class="tech-card tilt-card reveal" onclick="openLightbox('https://www.hasicovo.cz/ver/20240416103101/variant/article/2024/04/img_8036-20240416-101941/motive-article-detail-desktop.webp', 'CAS 24 – Nová cisterna')">
+                <div class="tech-card tilt-card reveal" onclick="openLightbox('https://www.hasicovo.cz/file/edee/2024/04/img_8035.jpg', 'CAS 24 - cisterna')">
                     <span class="view-hint">📷 Klikni pro fotku</span>
                     <div class="tech-icon">🚒</div>
                     <div>
@@ -1453,7 +1474,7 @@
                         <p>Osobní automobil darovaný Krajským ředitelstvím Policie Karlovarského kraje. Rozšíření zásahové flotily.</p>
                     </div>
                 </div>
-                <div class="tech-card tilt-card reveal" onclick="openLightbox('https://sdhchabarovice.estranky.cz/img/original/517/fiat-ducato-da---9.jpg', 'Fiat Ducato – dar THW Pirna')">
+                <div class="tech-card tilt-card reveal" onclick="openLightbox('https://sdhchabarovice.estranky.cz/img/original/517/fiat-ducato-da---9.jpg', 'Fiat Ducato – dar od THW Pirna')">
                     <span class="view-hint">📷 Klikni pro fotku</span>
                     <div class="tech-icon">🚐</div>
                     <div>
@@ -1528,11 +1549,12 @@
 
     <!-- FOOTER -->
     <footer>
+        <div id="mapa" style="height: 400px; border-radius: 24px; overflow: hidden; border: 1px solid var(--glass-border);"></div>   
         <div class="footer-logo">🚒 SDH Chabařovice</div>
         <p>Teplická 375, 403 17 Chabařovice</p>
         <p>📧 <a href="mailto:sdhchabarovice@gmail.com">sdhchabarovice@gmail.com</a> | DS: 69ggffe</p>
         <div class="footer-bottom">
-            <p>© 2026 SDH Chabařovice | V případě nouze volejte <strong>150</strong> / <strong>112</strong></p>
+            <p>© 2026 SDH Chabařovice 
         </div>
     </footer>
 
@@ -1554,19 +1576,7 @@
             particlesEl.appendChild(p);
         }
 
-        // ===== THEME SWITCHING (RED ↔ BLUE) =====
-        const blueSection = document.getElementById('spoluprace');
-        const themeObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
-                    document.body.classList.add('theme-blue');
-                } else if (entry.intersectionRatio < 0.3) {
-                    document.body.classList.remove('theme-blue');
-                }
-            });
-        }, { threshold: [0, 0.3, 0.5, 0.7, 1] });
 
-        themeObserver.observe(blueSection);
 
         // ===== SCROLL REVEAL =====
         const revealObserver = new IntersectionObserver((entries) => {
@@ -1675,6 +1685,17 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
         document.querySelector('.nav-links')?.classList.remove('active');
     });
 });   
+
+// ===== MAPA =====
+//const map = L.map('mapa').setView([50.6765, 13.9365], 15);
+
+//L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+//    attribution: '© Esri',
+ //   maxZoom: 19
+//}).addTo(map);
+
+//L.marker([50.6765, 13.9365]).addTo(map)
+  //  .bindPopup('<strong>SDH Chabařovice</strong><br>Teplická 375, 403 17 Chabařovice');    
     </script>
 </body>
 </html>   
