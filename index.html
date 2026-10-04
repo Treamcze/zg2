@@ -1265,6 +1265,47 @@
 .gallery-grid.collapsed .gallery-item {
     display: none;
 }   
+.filter-level {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.filter-level.hidden {
+    display: none;
+}
+
+.filter-level:not(:last-child)::after {
+    content: '→';
+    display: flex;
+    align-items: center;
+    color: var(--text-dim);
+    font-size: 1.2rem;
+    padding: 0 8px;
+}
+
+.filter-btn.back-btn {
+    background: transparent;
+    border-color: var(--glass-border);
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    padding: 10px 14px;
+}
+
+.filter-btn.back-btn:hover {
+    color: var(--text);
+    border-color: var(--accent);
+}   
+.collapse-btn {
+    margin-left: auto;
+    background: transparent;
+}
+
+.gallery-grid.collapsed .gallery-item {
+    display: none;
+}   
    </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>   
@@ -1468,55 +1509,84 @@
         </div>
 
         <!-- FILTER BUTTONS -->
-      <div class="gallery-filters reveal">
-    <button class="filter-btn active" data-filter="all">Vše</button>
-    <button class="filter-btn" data-filter="zasah">🚨 Zásahy</button>
-    <button class="filter-btn" data-filter="soutez">🏆 Soutěže</button>
-    <button class="filter-btn" data-filter="spolecenske">🎪 Společenské</button>
-    <button class="filter-btn" data-filter="technika">🔧 Technika</button>
+   <div class="gallery-filters reveal">
+    <!-- LEVEL 1: Roky -->
+  <div class="filter-level" id="filterLevel1">
+    <button class="filter-btn active" data-year="all">Vše</button>
+    <button class="filter-btn" data-year="2026">2026</button>
+    <button class="filter-btn" data-year="2025">2025</button>
+    <button class="filter-btn" data-year="2024">2024</button>
+    <button class="filter-btn" data-year="2022">2022</button>
     <button class="filter-btn collapse-btn" id="collapseBtn">⬆ Sbalit vše</button>
 </div>   
+    
+    <!-- LEVEL 2: Měsíce (skryté) -->
+    <div class="filter-level hidden" id="filterLevel2">
+        <button class="filter-btn" data-month="all">Vše</button>
+        <button class="filter-btn" data-month="1">Leden</button>
+        <button class="filter-btn" data-month="2">Únor</button>
+        <button class="filter-btn" data-month="3">Březen</button>
+        <button class="filter-btn" data-month="4">Duben</button>
+        <button class="filter-btn" data-month="5">Květen</button>
+        <button class="filter-btn" data-month="6">Červen</button>
+        <button class="filter-btn" data-month="7">Červenec</button>
+        <button class="filter-btn" data-month="8">Srpen</button>
+        <button class="filter-btn" data-month="9">Září</button>
+        <button class="filter-btn" data-month="10">Říjen</button>
+        <button class="filter-btn" data-month="11">Listopad</button>
+        <button class="filter-btn" data-month="12">Prosinec</button>
+    </div>
+   
+    
+</div>   
+</div>   
         <div class="gallery-grid">
-            <div class="gallery-item reveal" data-category="spolecenske">
+                 <div class="gallery-item reveal" data-rok="2026" data-mesic="9">
                 <img src="https://scontent-prg1-1.xx.fbcdn.net/v/t39.30808-6/817846695_10226503505413496_527919822187315934_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1536&ctp=s2048x1536&_nc_cat=100&ccb=1-7&_nc_sid=aa7b47&_nc_ohc=SNqQJM1knNIQ7kNvwEx9eAE&_nc_oc=AdqjgPAYc2jPGsVlVlI_Z61NPbFJZspxrrNjcpZL4mbCT6SpuvWjkOZmAbBCk6PHI7s&_nc_zt=23&_nc_ht=scontent-prg1-1.xx&_nc_gid=mW6RqWjQ3qUn4Qpdd1vh5w&_nc_ss=7b2a8&oh=00_AQMvDo7-mztN4t-M629b10uQa6lB5D-uHtdPWj7u7Tk5QQ&oe=6AC6CDB1" alt="Hasičské vozidlo">
                 <div class="fallback">🚒</div>
                 <div class="gallery-shine"></div>
                 <div class="gallery-caption">Záchranný vůz – Hasičský festival 2026</div>
             </div>
 
-            <div class="gallery-item reveal" data-category="zasah">
+                 <div class="gallery-item reveal" data-rok="2022" data-mesic="7">
                 <img src="https://scontent-prg1-1.xx.fbcdn.net/v/t39.30808-6/686339437_829828436840169_5187198427105583403_n.jpg?stp=dst-jpg_tt6&cstp=mx1200x1600&ctp=s1200x1600&_nc_cat=106&ccb=1-7&_nc_sid=aa7b47&_nc_ohc=fOt4_X2dSmcQ7kNvwHBZStp&_nc_oc=AdpmJCOXnw6QOLjcFQByP8t387TGST2YfwcNPOEqi8vFoR9rmmFPQfKkP9hZjW3TrUY&_nc_zt=23&_nc_ht=scontent-prg1-1.xx&_nc_gid=r0oPkUXvt-bSbknHt1P4Gg&_nc_ss=7b2a8&oh=00_AQPE_ZCmQaEwmwLJ5CJ_B0m_UdrtgL_-gUfoVHa3cWvtqg&oe=6AC6C067" alt="Hasiči v akci">
                 <div class="fallback">👨‍🚒</div>
                 <div class="gallery-shine"></div>
                 <div class="gallery-caption">Hasičský zásah v Českém Švýcarsku</div>
             </div>
 
-            <div class="gallery-item reveal" data-category="soutez">
+         <div class="gallery-item reveal" data-rok="2026" data-mesic="4">
                 <img src="https://scontent-prg1-1.xx.fbcdn.net/v/t39.30808-6/679453837_823814560774890_9042873563584181823_n.jpg?stp=dst-jpg_tt6&cstp=mx1600x1204&ctp=s1600x1204&_nc_cat=108&ccb=1-7&_nc_sid=aa7b47&_nc_ohc=RddLTNLm3IMQ7kNvwHEIzPZ&_nc_oc=Ador8XJzVm3qGjlhYAO-_BHgnelHccikpaSju_v7v-giryeKk8dg87YlnFDJUCX5E6c&_nc_zt=23&_nc_ht=scontent-prg1-1.xx&_nc_gid=KhjwdzyCEMdp9eEsN28WVw&_nc_ss=7b2a8&oh=00_AQMbNs7LT5ePclbrMcgjy4ykWq4N6mhyzEYij91Yqp9ogg&oe=6AC82FBD" alt="Soutěž v Chabařovicích">
                 <div class="fallback">🔥</div>
                 <div class="gallery-shine"></div>
                 <div class="gallery-caption">Závody v Chabařovicích – 11. ročník</div>
             </div>
 
-            <div class="gallery-item reveal" data-category="spolecenske">
+            <div class="gallery-item reveal" data-rok="2026" data-mesic="5">
                 <img src="https://scontent-prg1-1.xx.fbcdn.net/v/t39.30808-6/700658244_840343085788704_7181393630484533723_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1536&ctp=s2048x1536&_nc_cat=106&ccb=1-7&_nc_sid=aa7b47&_nc_ohc=R9YcwtJoQ6wQ7kNvwGkyLjy&_nc_oc=AdpPV3mYmgs6k1Wqt_nI1lCFZyJ5qYZUGXsauAnH2YRJvzIW3eaQL8dTM3J1CvHYpg0&_nc_zt=23&_nc_ht=scontent-prg1-1.xx&_nc_gid=1eKryjYR4bfBwa_i30uIMA&_nc_ss=7b2a8&oh=00_AQPyYfCkZXi3bh3DCsKYh4T76McllLaX1bbsavRM6OtV5g&oe=6AC6C79E" alt="THW">
                 <div class="fallback">💪</div>
                 <div class="gallery-shine"></div>
                 <div class="gallery-caption">Tábor s kolegy z THW – 2026</div>
             </div>
 
-            <div class="gallery-item reveal" data-category="soutez">
+                 <div class="gallery-item reveal" data-rok="2026" data-mesic="10">
                 <img src="https://scontent-prg1-1.xx.fbcdn.net/v/t39.30808-6/830598613_960310270458651_4606316314420974944_n.jpg?stp=dst-jpg_tt6&cstp=mx640x1136&ctp=s640x1136&_nc_cat=101&ccb=1-7&_nc_sid=aa7b47&_nc_ohc=Ou1GL38dNzgQ7kNvwF_QIw1&_nc_oc=AdqtzpEta7Az1L4ifhXK2i69ua4K65ihKx2lI-J410tH8j7F2-yh_BriDo-YWPZe0Sk&_nc_zt=23&_nc_ht=scontent-prg1-1.xx&_nc_gid=ff6syZJCC2nogxrZ4a_55Q&_nc_ss=7b2a8&oh=00_AQNL34P8zuDqmNPcdEydO1FVFde1tOgOL8auwfWpzF3D2g&oe=6AC82F8E" alt="Memoriál">
                 <div class="fallback">🛠️</div>
                 <div class="gallery-shine"></div>
                 <div class="gallery-caption">14. ročník Memoriálu Pavla Doubravy</div>
             </div>
 
-            <div class="gallery-item reveal" data-category="technika">
+                 <div class="gallery-item reveal" data-rok="2026" data-mesic="7">
                 <img src="https://scontent-prg1-1.xx.fbcdn.net/v/t39.30808-6/745661647_1337970928488162_2677171680754348278_n.jpg?stp=dst-jpg_tt6&cstp=mx1500x2000&ctp=s1500x2000&_nc_cat=104&ccb=1-7&_nc_sid=833d8c&_nc_ohc=GjDzMTHZVh4Q7kNvwEAR7WE&_nc_oc=AdpdklTXOgp91sWBF9a9GtindxF-vfpJw1tb0IieC0cLfs-U9efZeB80k9yNR6cM1IE&_nc_zt=23&_nc_ht=scontent-prg1-1.xx&_nc_gid=NK5HxN0Cdz2WY__FRLEtig&_nc_ss=7b2a8&oh=00_AQPARSb74P8h9U56VX-l19pGf1z8Mmfa3xBXz3Pyu0BkaQ&oe=6AC6BB7C" alt="Hasičská technika">
                 <div class="fallback">🌙</div>
                 <div class="gallery-shine"></div>
-                <div class="gallery-caption">Výměna motoru hasičské Tatry – 11. 7. 2026</div>
+                <div class="gallery-caption">Výměna motoru hasičské Tatry </div>
+            </div>
+             <div class="gallery-item reveal" data-rok="2026" data-mesic="7">
+                <img src="https://scontent-prg1-1.xx.fbcdn.net/v/t39.30808-6/743497150_1337970911821497_3925878366877235613_n.jpg?stp=dst-jpg_tt6&cstp=mx1500x2000&ctp=s1500x2000&_nc_cat=106&ccb=1-7&_nc_sid=833d8c&_nc_ohc=DGNtcGnz2c0Q7kNvwHJeCPj&_nc_oc=Adqsq6JzTwit4NHsJ8OxqH4k1v6jsJhhs6GAgSnEPgVUxVMVsF3-6jB7o8cSB7QX_3g&_nc_zt=23&_nc_ht=scontent-prg1-1.xx&_nc_gid=KPgRx7QHAGUafa03nsGkLQ&_nc_ss=7b2a8&oh=00_AQMsPccfWzLkhKYJityuKv4wonRLD4soaSVj4wS64WaSZw&oe=6AC82A5D" alt="Hasičská technika">
+                <div class="fallback">🌙</div>
+                <div class="gallery-shine"></div>
+                <div class="gallery-caption">Výměna motoru hasičské Tatry </div>
             </div>
         </div>
     </div>
@@ -1759,52 +1829,77 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     });
 });   
 
-// ===== MAPA =====
-//const map = L.map('mapa').setView([50.6765, 13.9365], 15);
-
-//L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
-//    attribution: '© Esri',
- //   maxZoom: 19
-//}).addTo(map);
-
-//L.marker([50.6765, 13.9365]).addTo(map)
-  //  .bindPopup('<strong>SDH Chabařovice</strong><br>Teplická 375, 403 17 Chabařovice');    
+ 
    
-   // ===== GALLERY FILTER =====
-const filterBtns = document.querySelectorAll('.filter-btn');
+// ===== HIERARCHICAL GALLERY FILTER =====
+const level1 = document.getElementById('filterLevel1');
+const level2 = document.getElementById('filterLevel2');
 const galleryItems = document.querySelectorAll('.gallery-item');
 
-filterBtns.forEach(btn => {
+let currentYear = 'all';
+let currentMonth = 'all';
+
+// LEVEL 1 – Roky
+level1.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-        // Aktivní tlačítko
-        filterBtns.forEach(b => b.classList.remove('active'));
+        level1.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
+        currentYear = btn.dataset.year;
+        currentMonth = 'all';
 
-        const filter = btn.dataset.filter;
-
-        galleryItems.forEach(item => {
-            if (filter === 'all' || item.dataset.category === filter) {
-                item.classList.remove('hidden');
-                item.style.animation = 'none';
-                item.offsetHeight; // reflow
-                item.style.animation = '';
-            } else {
-                item.classList.add('hidden');
-            }
-        });
+        if (currentYear === 'all') {
+            level2.classList.add('hidden');
+        } else {
+            level2.classList.remove('hidden');
+            level2.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            level2.querySelector('[data-month="all"]').classList.add('active');
+        }
+        applyFilter();
     });
-});   
+});
+
+// LEVEL 2 – Měsíce
+level2.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        level2.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentMonth = btn.dataset.month;
+        applyFilter();
+    });
+});
+
+function applyFilter() {
+    galleryItems.forEach(item => {
+        const year = item.dataset.rok;
+        const month = item.dataset.mesic;
+
+        let show = true;
+        if (currentYear !== 'all' && year !== currentYear) show = false;
+        if (currentMonth !== 'all' && month !== currentMonth) show = false;
+
+        if (show) {
+            item.classList.remove('hidden');
+            item.style.animation = 'none';
+            item.offsetHeight;
+            item.style.animation = '';
+        } else {
+            item.classList.add('hidden');
+        }
+    });
+}
+
+
+    
 // ===== GALLERY COLLAPSE =====
 const collapseBtn = document.getElementById('collapseBtn');
 const galleryGrid = document.querySelector('.gallery-grid');
 
-collapseBtn.addEventListener('click', () => {
+collapseBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
     galleryGrid.classList.toggle('collapsed');
-    if (galleryGrid.classList.contains('collapsed')) {
-        collapseBtn.textContent = '⬇ Rozbalit vše';
-    } else {
-        collapseBtn.textContent = '⬆ Sbalit vše';
-    }
+    collapseBtn.textContent = galleryGrid.classList.contains('collapsed')
+        ? '⬇ Rozbalit vše'
+        : '⬆ Sbalit vše';
 });   
    </script>
 </body>
